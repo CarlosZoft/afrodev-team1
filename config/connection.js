@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 const dbConfiguration = require('./database.config');
-const Ong = require('../application/model/ong');
+const Familia = require('../application/model/Familia');
 
 const connection = new Sequelize(dbConfiguration);
-Ong.init(connection);
+Familia.init(connection);
 
 module.exports = connection;
