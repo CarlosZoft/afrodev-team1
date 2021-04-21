@@ -1,2 +1,4 @@
-node_modules/*
+.env.dev
+.env.test
+node_modules
 coverage/*
