@@ -2,9 +2,9 @@ const Familia = require('../model/Familia');
 
 exports.create = async (familia) => {
   try {
-    const newFamilia = await Familia.create(familia);
-    return newFamilia;
-  } catch (err) {
+    return await Familia.create(familia);
+  } 
+  catch (err) {
     console.log(err);
     const error = new Error('Ocorreu um erro ao criar familia');
     error.statusCode = 500;
@@ -14,10 +14,9 @@ exports.create = async (familia) => {
 
 exports.findAll = async (familia) => {
   try {
-    const familias = await Familia.findAll({
+    return await Familia.findAll({
       where: familia,
     });
-    return familias;
   } catch (err) {
     console.log(err);
     const error = new Error('Ocorreu um erro ao buscar familias');
@@ -28,8 +27,8 @@ exports.findAll = async (familia) => {
 
 exports.findById = async (id) => {
   try {
-    const familia = await Familia.findByPk(id);
-    return familia;
+    return await Familia.findByPk(id);
+   
   } catch (err) {
     console.log(err);
     const error = new Error('Ocorreu um erro ao buscar familia');
