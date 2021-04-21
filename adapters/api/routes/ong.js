@@ -1,4 +1,4 @@
-const controller = require('../../controllers/ong');
+const controller = require('../../controllers/familia');
 const validators = require('../validators/ong');
 
 const invalidRequestReply = (request, reply, errors) => reply.status(400).json({
