@@ -11,7 +11,7 @@ class Familia extends Model {
           allowNull: false,
           primaryKey: true,
         },
-        nomeFamilia: {
+        nome_familia: {
           type: DataTypes.STRING,
           allowNull: false,
         },
@@ -19,7 +19,7 @@ class Familia extends Model {
           type: DataTypes.STRING,
           allowNull: false,
         },
-        quantidadeMembros: {
+        quantidade_membros: {
           type: DataTypes.INTEGER,
           allowNull: false,
         },
@@ -40,7 +40,7 @@ class Familia extends Model {
       {
         sequelize,
         underscored: true,
-        tableName: 'ongs',
+        tableName: 'familias'
       },
     );
   }
