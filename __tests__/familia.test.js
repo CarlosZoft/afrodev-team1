@@ -38,16 +38,16 @@ describe('Getting data from API - Family', () => {
                   "quantidade_membros": 9,
                   "preferencial": false,
                   "renda": 2300,
-                  "status": "Ativo"
+                  "status": "Inativo"
                 })
     expect(res.status).toBe(200);
     expect(res.body).toStrictEqual({
-      "nome_familia": "Familia do Carlos",
-      "endereco": "family address - 908381 rua 09384",
-      "quantidade_membros": 6,
-      "preferencial": true,
-      "renda": 1500,
-      "status": "Ativo"
+        "nome_familia": "Familia do Carlos",
+        "endereco": "family address - 908381 rua 09384",
+        "quantidade_membros": 6,
+        "preferencial": true,
+        "renda": 1500,
+        "status": "Inativo"
     });
   });
 
