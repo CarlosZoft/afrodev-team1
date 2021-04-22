@@ -1,4 +1,6 @@
 const Familia = require('../model/Familia');
+const restricaoCampos = require('../../adapters/api/validators/CamposVerifica');
+const restricao = new restricaoCampos();
 
 exports.create = async (familia) => {
   try {
@@ -39,10 +41,10 @@ exports.findById = async (id) => {
 
 exports.patch = async (id, newFamilia) => {
   try {
-    return await Familia.update(newFamilia, {
+    return await Familia.update(restricao.patchFields(newFamilia), {
       where: {
-        id,
-      },
+        id:id
+      }
     });
   } catch (err) {
     console.log(err);
@@ -54,8 +56,12 @@ exports.patch = async (id, newFamilia) => {
 
 exports.update = async (id, newFamilia) => {
   try {
-    const familia = await Familia.findOne({ id });
-    familia.set(newFamilia);
+    const familia = await Familia.findOne({
+      where :{ 
+        id: id 
+      }
+    });
+    familia.set(restricao.updateFields(newFamilia));
     familia.save();
     return familia;
   } catch (err) {
