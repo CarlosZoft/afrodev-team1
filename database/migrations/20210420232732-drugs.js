@@ -28,7 +28,7 @@ module.exports = {
         allowNull: false,
       },
       brand: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       created_at: {
@@ -41,5 +41,5 @@ module.exports = {
       },
     }),
 
-  down: async (queryInterface) => queryInterface.dropTable("drugs"),
+  down: async (queryInterface) => queryInterface.dropTable('drugs'),
 };

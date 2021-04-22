@@ -5,10 +5,10 @@ exports.post = async (request) => {
   return result;
 };
 
-//exports.get = async (request) => {
-//  const result = await ongService.findAll(request.body);
-//  return result;
-//};
+exports.get = async (request) => {
+  const result = await drugsService.findAll(request.body);
+  return result;
+};
 
 //exports.getById = async (id) => {
 //  const result = await ongService.findById(id);
