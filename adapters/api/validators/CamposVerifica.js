@@ -12,7 +12,6 @@ class CamposVerifica {
     patchFields(body) {
             var bodyFinal = {}
             bodyFinal['status'] = body['status'];
-            console.log(bodyFinal);
             return bodyFinal;
     }
     
