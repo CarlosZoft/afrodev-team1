@@ -6,7 +6,7 @@ module.exports = {
       allowNull: false,
       autoIncrement: true,
     },
-    nomeFamilia: {
+    nome_familia: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -14,7 +14,7 @@ module.exports = {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    quantidadeMembros: {
+    quantidade_membros: {
       type: Sequelize.INTEGER,
       allowNull: false,
     },
@@ -29,6 +29,14 @@ module.exports = {
     status: {
       type: Sequelize.ENUM("Ativo","Inativo"),
       allowNull: false,
+    },
+    updated_at :{
+      type: "timestamp",
+      default: "now()",
+    },
+    created_at :{
+      type: "timestamp",
+      default: "now()",
     },
   }),
 
