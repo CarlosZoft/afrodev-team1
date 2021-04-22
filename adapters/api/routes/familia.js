@@ -85,6 +85,7 @@ module.exports = (app) => {
       throw error;
     }
   });
+
   app.patch('/familia/:id', validators.patchValidator(), async (request, reply) => {
       /*  #swagger.parameters['post family object'] = {
             in: 'body',
@@ -99,7 +100,7 @@ module.exports = (app) => {
         return invalidRequestReply(request, reply, errors);
       }
       const response = await controller.patch(request.params.id, request, reply);
-      return reply.json(response);
+      return reply.json(verify.patchFields(response));
     }
     catch(error){
       throw error;
