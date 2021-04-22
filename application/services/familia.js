@@ -39,21 +39,6 @@ exports.findById = async (id) => {
   }
 };
 
-exports.patch = async (id, newFamilia) => {
-  try {
-    return await Familia.update(restricao.patchFields(newFamilia), {
-      where: {
-        id:id
-      }
-    });
-  } catch (err) {
-    console.log(err);
-    const error = new Error('Ocorreu um erro na atualização do status!');
-    error.statusCode = 500;
-    throw error;
-  }
-};
-
 exports.update = async (id, newFamilia) => {
   try {
     const familia = await Familia.findOne({
@@ -62,6 +47,24 @@ exports.update = async (id, newFamilia) => {
       }
     });
     familia.set(restricao.updateFields(newFamilia));
+    familia.save();
+    return familia;
+  } catch (err) {
+    console.log(err);
+    const error = new Error('Ocorreu um erro na atualização do status!');
+    error.statusCode = 500;
+    throw error;
+  }
+};
+
+exports.patch = async (id, newFamilia) => {
+  try {
+    const familia = await Familia.findOne({
+      where :{ 
+        id: id 
+      }
+    });
+    familia.set(restricao.patchFields(newFamilia));
     familia.save();
     return familia;
   } catch (err) {
