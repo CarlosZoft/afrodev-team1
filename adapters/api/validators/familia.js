@@ -1,4 +1,4 @@
-const { check, validationResult } = require('express-validator');
+const { check, validationResult, oneOf } = require('express-validator');
 
 exports.validateRequest = (req) => {
   const result = validationResult(req);
@@ -6,7 +6,7 @@ exports.validateRequest = (req) => {
 };
 
 exports.registerValidator = () => [
-  check('nomeFamilia')
+  check('nome_familia')
     .notEmpty()
     .withMessage('Nome não informado')
     .isLength({min : 5})
@@ -18,7 +18,7 @@ exports.registerValidator = () => [
     .withMessage('Endereço não informado')
     .isLength({ min:15 , max: 200 })
     .withMessage('O endereço deve conter entre 15-200 caracteres'),
-  check('quantidadeMembros')
+  check('quantidade_membros')
     .notEmpty()
     .withMessage('A quantidade de membros não foi informada')
     .isNumeric()
@@ -35,9 +35,11 @@ exports.registerValidator = () => [
     .withMessage('O campo Renda aceita somente numeros'),
   check('status')
     .notEmpty()
-    .withMessage('O status não foi informado')
-    //.if('Status' !== 'Ativo' && 'Status' !== 'Inativo')
-    //.withMessage('O status aceita somente Ativo ou Inativo')
+    .withMessage('O status não foi informado'),
+  oneOf([
+    check('status').equals('Ativo'),
+    check('status').equals('Inativo')
+  ], "O status aceita somente Ativo ou Inativo")
 ];
 
 exports.updateValidator = () => [
@@ -46,7 +48,7 @@ exports.updateValidator = () => [
     .withMessage('Endereço não informado')
     .isLength({ min:15 , max: 200 })
     .withMessage('O endereço deve conter entre 15-200 caracteres'),
-  check('quantidadeMembros')
+  check('quantidade_membros')
     .notEmpty()
     .withMessage('A quantidade de membros não foi informada')
     .isNumeric()
@@ -66,7 +68,9 @@ exports.updateValidator = () => [
 exports.patchValidator = () => [
   check('status')
   .notEmpty()
-  .withMessage('O status não foi informado')
-  //.if(status !== 'Ativo' && status !== 'Inativo')
-  //.withMessage('O status aceita somente Ativo ou Inativo')
+  .withMessage('O status não foi informado'),
+  oneOf([
+    check('status').equals('Ativo'),
+    check('status').equals('Inativo')
+  ], "O status aceita somente Ativo ou Inativo")
 ];
