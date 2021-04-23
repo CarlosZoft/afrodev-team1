@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 
-const Model = require("./baseModel");
+const Model = require('./baseModel');
 
 class Drugs extends Model {
   static init(sequelize) {
@@ -40,7 +40,7 @@ class Drugs extends Model {
       {
         sequelize,
         underscored: true,
-        tableName: "drugs",
+        tableName: 'drugs',
       }
     );
   }
