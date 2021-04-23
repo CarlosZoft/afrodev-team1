@@ -7,7 +7,6 @@ exports.create = async (familia) => {
     return await Familia.create(familia);
   } 
   catch (err) {
-    console.log(err);
     const error = new Error('Ocorreu um erro ao criar familia');
     error.statusCode = 500;
     throw error;
@@ -20,7 +19,6 @@ exports.findAll = async (familia) => {
       where: familia,
     });
   } catch (err) {
-    console.log(err);
     const error = new Error('Ocorreu um erro ao buscar familias');
     error.statusCode = 500;
     throw error;
@@ -32,7 +30,6 @@ exports.findById = async (id) => {
     return await Familia.findByPk(id);
    
   } catch (err) {
-    console.log(err);
     const error = new Error('Ocorreu um erro ao buscar familia');
     error.statusCode = 500;
     throw error;
@@ -50,7 +47,6 @@ exports.update = async (id, newFamilia) => {
     familia.save();
     return familia;
   } catch (err) {
-    console.log(err);
     const error = new Error('Ocorreu um erro na atualização do status!');
     error.statusCode = 500;
     throw error;
@@ -68,7 +64,6 @@ exports.patch = async (id, newFamilia) => {
     familia.save();
     return familia;
   } catch (err) {
-    console.log(err);
     const error = new Error('Ocorreu um erro ao atualizar familia');
     error.statusCode = 500;
     throw error;
