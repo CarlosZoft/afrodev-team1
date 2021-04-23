@@ -5,8 +5,8 @@ exports.post = async (request) => {
   return result;
 };
 
-exports.get = async (request) => {
-  const result = await drugsService.findAll(request.body);
+exports.get = async () => {
+  const result = await drugsService.findAll();
   return result;
 };
 
