@@ -10,18 +10,6 @@ const invalidRequestReply = (request, reply, errors) => reply.status(400).json({
 
 module.exports = (app) => {
   app.post('/familia', validators.registerValidator(), async (request, reply) => {
-    /*  #swagger.parameters['post family object'] = {
-            in: 'body',
-            description: "New family values",
-            schema: {
-                "$nameFamilia": "New family name",
-                "$endereco": "family address",
-                "$quantidadeMembros": 5,
-                "$preferencial": true,
-                "$renda": 1000,
-                "$status": active
-            }
-    } */
     const errors = validators.validateRequest(request);
     if (errors.length) {
       return invalidRequestReply(request, reply, errors);
@@ -44,16 +32,10 @@ module.exports = (app) => {
   });
 
   app.put('/familia/:id', validators.updateValidator(), async (request, reply) => {
-    /*  #swagger.parameters['put family object'] = {
-            in: 'body',
-            description: "New family values",
-            schema: {
-                "$endereco": "family address",
-                "$quantidadeMembros": 5,
-                "$preferencial": true,
-                "$renda": 1000,
-            }
-      } */
+    const getFamilia = await controller.getById(request.params.id, request, reply);
+    if (!getFamilia) {
+      return reply.status(404).send({ mensagemError: 'Usuario nao encontrado' });
+    }
     const errors = validators.validateRequest(request);
     if (errors.length) {
       return invalidRequestReply(request, reply, errors);
@@ -63,13 +45,10 @@ module.exports = (app) => {
   });
 
   app.patch('/familia/:id', validators.patchValidator(), async (request, reply) => {
-    /*  #swagger.parameters['post family object'] = {
-            in: 'body',
-            description: "New family values",
-            schema: {
-                "$status": "active"
-            }
-      } */
+    const getFamilia = await controller.getById(request.params.id, request, reply);
+    if (!getFamilia) {
+      return reply.status(404).send({ mensagemError: 'Usuario nao encontrado' });
+    }
     const errors = validators.validateRequest(request);
     if (errors.length) {
       return invalidRequestReply(request, reply, errors);
