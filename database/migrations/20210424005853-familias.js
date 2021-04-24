@@ -31,10 +31,12 @@ module.exports = {
       allowNull: false,
     },
     updated_at: {
-      type: 'timestamp',
+      field: 'updated_at',
+      type: Sequelize.DATE,
     },
     created_at: {
-      type: 'timestamp',
+      field: 'created_at',
+      type: Sequelize.DATE,
     },
   }),
   down: async (queryInterface) => queryInterface.dropTable('familias'),
