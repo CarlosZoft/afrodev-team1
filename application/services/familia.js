@@ -1,12 +1,12 @@
 const Familia = require('../model/Familia');
-const restricaoCampos = require('../../adapters/api/validators/CamposVerifica');
-const restricao = new restricaoCampos();
+const RestricaoCampos = require('../../adapters/api/validators/CamposVerifica');
+
+const restricao = new RestricaoCampos();
 
 exports.create = async (familia) => {
   try {
     return await Familia.create(familia);
-  } 
-  catch (err) {
+  } catch (err) {
     const error = new Error('Ocorreu um erro ao criar familia');
     error.statusCode = 500;
     throw error;
@@ -28,7 +28,6 @@ exports.findAll = async (familia) => {
 exports.findById = async (id) => {
   try {
     return await Familia.findByPk(id);
-   
   } catch (err) {
     const error = new Error('Ocorreu um erro ao buscar familia');
     error.statusCode = 500;
@@ -39,9 +38,9 @@ exports.findById = async (id) => {
 exports.update = async (id, newFamilia) => {
   try {
     const familia = await Familia.findOne({
-      where :{ 
-        id: id 
-      }
+      where: {
+        id,
+      },
     });
     familia.set(restricao.updateFields(newFamilia));
     familia.save();
@@ -56,9 +55,9 @@ exports.update = async (id, newFamilia) => {
 exports.patch = async (id, newFamilia) => {
   try {
     const familia = await Familia.findOne({
-      where :{ 
-        id: id 
-      }
+      where: {
+        id,
+      },
     });
     familia.set(restricao.patchFields(newFamilia));
     familia.save();

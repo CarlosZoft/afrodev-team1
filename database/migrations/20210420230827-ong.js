@@ -27,18 +27,18 @@ module.exports = {
       allowNull: false,
     },
     status: {
-      type: Sequelize.ENUM("Ativo","Inativo"),
+      type: Sequelize.ENUM('Ativo', 'Inativo'),
       allowNull: false,
     },
-    updated_at :{
-      type: "timestamp",
-      default: "now()",
+    updated_at: {
+      type: 'timestamp',
+      default: 'now()',
     },
-    created_at :{
-      type: "timestamp",
-      default: "now()",
+    created_at: {
+      type: 'timestamp',
+      default: 'now()',
     },
   }),
 
-  down: async (queryInterface, Sequelize) => queryInterface.dropTable('ongs'),
+  down: async (queryInterface) => queryInterface.dropTable('ongs'),
 };

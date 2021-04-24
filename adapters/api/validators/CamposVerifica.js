@@ -1,40 +1,43 @@
 class CamposVerifica {
-   
-    updateFields(body) {
-        var camposPermitidos = ['endereco', 'quantidade_membros', 'preferencial', 'renda'];
-        var bodyFinal = {};
-        camposPermitidos.forEach((campo) => {
-            bodyFinal[campo] = body[campo]        
-        });
-        return bodyFinal;
+  updateFields(body) {
+    if (!body) {
+      return {};
     }
+    const camposPermitidos = ['endereco', 'quantidade_membros', 'preferencial', 'renda'];
+    const bodyFinal = {};
+    camposPermitidos.forEach((campo) => {
+      bodyFinal[campo] = body[campo];
+    });
+    return this.bodyFinal;
+  }
 
-    patchFields(body) {
-            var bodyFinal = {}
-            bodyFinal['status'] = body['status'];
-            return bodyFinal;
+  patchFields(body) {
+    if (!body) {
+      return {};
     }
-    
-    createFields(body) {
-            const camposPermitidos = ['nome_familia', 'endereco', 'quantidade_membros', 'preferencial', 'renda', 'status'];
-            var bodyFinal = {}
-            camposPermitidos.forEach(campo => {
+    const bodyFinal = {};
+    bodyFinal.status = body.status;
+    return this.bodyFinal;
+  }
 
-                bodyFinal[campo] = body[campo]
-            })
-            return bodyFinal;
+  createFields(body) {
+    if (!body) {
+      return {};
     }
-    
-    allFields(body) {
-        let dadosFiltrados = this.createFields(body)
-            
-        if(Array.isArray(body)){
-            dadosFiltrados = body.map((dado) => {
-                    return this.createFields(dado);
-            })
-        }
-        return dadosFiltrados;
+    const camposPermitidos = ['nome_familia', 'endereco', 'quantidade_membros', 'preferencial', 'renda', 'status'];
+    const bodyFinal = {};
+    camposPermitidos.forEach((campo) => {
+      bodyFinal[campo] = body[campo];
+    });
+    return this.bodyFinal;
+  }
+
+  allFields(body) {
+    let dadosFiltrados = this.createFields(body);
+    if (Array.isArray(body)) {
+      dadosFiltrados = body.map((dado) => this.createFields(dado));
     }
+    return dadosFiltrados;
+  }
 }
-
 module.exports = CamposVerifica;

@@ -32,15 +32,15 @@ class Familia extends Model {
           allowNull: false,
         },
         status: {
-          type: DataTypes.ENUM("Ativo","Inativo"),
+          type: DataTypes.ENUM('Ativo', 'Inativo'),
           allowNull: false,
         },
-        
+
       },
       {
         sequelize,
         underscored: true,
-        tableName: 'familias'
+        tableName: 'familias',
       },
     );
   }
