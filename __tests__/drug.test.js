@@ -29,7 +29,7 @@ describe("Getting data from API - Drugs", () => {
   it("Calling GET endpoint by id", async () => {
     // Sends GET Request to /test endpoint
 
-    const res = await request.get("/drugs/1");
+    const res = await request.get("/drugs/2");
     expect(res.status).toBe(200);
     expect(res.body.length).toBe(1);
     expect(res.body[0]).toHaveProperty("id");
@@ -45,7 +45,7 @@ describe("Getting data from API - Drugs", () => {
     // ...
   });
 
-  it("Calling POST endpoint", async () => {
+  it("Calling POST and DELETE endpoint", async () => {
     const resBefore = await request.get("/drugs");
     expect(resBefore.status).toBe(200);
 
@@ -73,19 +73,27 @@ describe("Getting data from API - Drugs", () => {
     expect(resAfter.status).toBe(200);
     expect(resAfter.body.length).toBeGreaterThan(resBefore.body.length);
 
+    const resDel = await request.delete("/drugs/"  +  resPost.body.id);
+    expect(resDel.status).toBe(200);
+
+    const resAfter2 = await request.get("/drugs");
+    expect(resAfter2.status).toBe(200);
+    expect(resAfter2.body.length).toBeLessThan(resAfter.body.length);
+    expect(resAfter2.body.length).toBe(resBefore.body.length);
+
     // ...
   });
 
   it("Calling UPDATE endpoint", async () => {
-    const resBefore = await request.get("/drugs/1");
-    expect(resBefore.status).toBe(200);
-    const oldName = resPost.body.name;
+    const res = await request.get("/drugs/2");
+    expect(res.status).toBe(200);
+    const oldName = res.body.name;
     const newName = oldName + "New";
 
     const obj = {
       name: newName,
     };
-    const resPut = await request.post("/drugs/1").send(obj);
+    const resPut = await request.put("/drugs/2").send(obj);
     expect(resPut.status).toBe(200);
     expect(resPut.body).toHaveProperty("id");
     expect(resPut.body).toHaveProperty("name");
@@ -98,20 +106,6 @@ describe("Getting data from API - Drugs", () => {
     expect(resPut.body).toHaveProperty("updated_at");
     expect(resPut.body.name).not.toBe(oldName);
     expect(resPut.body.name).toBe(newName);
-
-    // ...
-  });
-
-  it("Calling DELETE endpoint", async () => {
-    const resBefore = await request.get("/drugs");
-    expect(resBefore.status).toBe(200);
-
-    const resPost = await request.delete("/drugs/1");
-    expect(resPost.status).toBe(200);
-
-    const resAfter = await request.get("/drugs");
-    expect(resAfter.status).toBe(200);
-    expect(resAfter.body.length).toBeLessThan(resBefore.body.length);
 
     // ...
   });
