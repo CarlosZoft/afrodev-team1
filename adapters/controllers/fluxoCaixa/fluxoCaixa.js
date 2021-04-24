@@ -1,4 +1,4 @@
-const servicosFluxoCaixa = require('../../../application/services/familia/familia');
+const servicosFluxoCaixa = require('../../../application/services/fluxoCaixa/fluxoCaixa');
 
 exports.post = async (request) => servicosFluxoCaixa.create(request.body);
 
