@@ -2,22 +2,13 @@ const supertest = require('supertest');
 const app = require('../index');
 
 const request = supertest(app);
-const sequelize = require('../config/connection');
+const modelFamilia = require('../application/model/Familia');
+const connectionDB = require('../config/connection');
 
 describe('Getting data from API - Family', () => {
   beforeAll(async () => {
-    await sequelize.authenticate();
+    await connectionDB.authenticate();
   });
-
-  /* it('Calling GET endpoint without parameters', async () => {
-
-    const res = await request.get('/familia');
-    expect(res.status).toBe(200);
-    expect(res.body).toStrictEqual([]);
-
-  }); */
-
-  // Primeiro Teste
 
   it('Calling POST endpoint without parameters', async () => {
     request.post('/familia')
