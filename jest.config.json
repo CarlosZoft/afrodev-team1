@@ -1,3 +1,4 @@
 {
-    "setupFilesAfterEnv": ["./config/testSetup.js"]
+    "setupFilesAfterEnv": ["./config/testSetup.js"],
+    "testEnvironment": "node"
 }
