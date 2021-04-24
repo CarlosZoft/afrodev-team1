@@ -37,6 +37,9 @@ module.exports = (app) => {
 
   app.get('/familia/:id', async (request, reply) => {
     const response = await controller.getById(request.params.id, request, reply);
+    if (!response) {
+      return reply.status(404).send({ mensagemError: 'Usuario nao encontrado' });
+    }
     return reply.json(verify.createFields(response));
   });
 
@@ -52,7 +55,7 @@ module.exports = (app) => {
             }
       } */
     const errors = validators.validateRequest(request);
-    if (errors.length > 0) {
+    if (errors.length) {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.put(request.params.id, request, reply);
@@ -68,7 +71,7 @@ module.exports = (app) => {
             }
       } */
     const errors = validators.validateRequest(request);
-    if (errors.length > 0) {
+    if (errors.length) {
       return invalidRequestReply(request, reply, errors);
     }
     const response = await controller.patch(request.params.id, request, reply);
