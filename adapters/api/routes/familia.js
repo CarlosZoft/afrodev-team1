@@ -1,8 +1,6 @@
 const controller = require('../../controllers/familia');
 const validators = require('../validators/familia');
-const CamposVerifica = require('../validators/CamposVerifica');
-
-const verify = new CamposVerifica();
+const verify = require('../validators/CamposVerifica');
 
 const invalidRequestReply = (request, reply, errors) => reply.status(400).json({
   method: request.method,

@@ -1,7 +1,5 @@
 const Familia = require('../model/Familia');
-const RestricaoCampos = require('../../adapters/api/validators/CamposVerifica');
-
-const restricao = new RestricaoCampos();
+const restricao = require('../../adapters/api/validators/CamposVerifica');
 
 exports.create = async (familia) => {
   try {
