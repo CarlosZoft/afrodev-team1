@@ -1,12 +1,11 @@
-const Item = require("../model/items");
+const Item = require('../model/items');
 
 exports.register = async (item) => {
   try {
     const newItem = await Item.create(item);
     return newItem;
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while creating Item");
+    const error = new Error('An error occurred while creating Item');
     error.statusCode = 500;
     throw error;
   }
@@ -19,8 +18,7 @@ exports.findAll = async (item) => {
     });
     return items;
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while finding Items");
+    const error = new Error('An error occurred while finding Items');
     error.statusCode = 500;
     throw error;
   }
@@ -35,8 +33,7 @@ exports.findById = async (id) => {
     });
     return items;
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while finding item by id");
+    const error = new Error('An error occurred while finding item by id');
     error.statusCode = 500;
     throw error;
   }
@@ -50,8 +47,7 @@ exports.patch = async (id, newItem) => {
       },
     });
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while updating item");
+    const error = new Error('An error occurred while updating item');
     error.statusCode = 500;
     throw error;
   }
@@ -64,8 +60,7 @@ exports.update = async (id, newItem) => {
     item.save();
     return item;
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while updating Items");
+    const error = new Error('An error occurred while updating Items');
     error.statusCode = 500;
     throw error;
   }
@@ -80,8 +75,7 @@ exports.delete = async (id) => {
     });
     return item;
   } catch (err) {
-    console.log(err);
-    const error = new Error("An error ocurred while deleting Items");
+    const error = new Error('An error occurred while deleting Items');
     error.statusCode = 500;
     throw error;
   }
