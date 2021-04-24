@@ -15,9 +15,7 @@ exports.Validator = () => [
     .withMessage('Adicione um número real'),
   check('tipo')
     .notEmpty()
-    .withMessage('O tipo não foi informado')
-    .isNumeric()
-    .withMessage('O custo aceita somente numeros'),
+    .withMessage('O tipo não foi informado'),
   oneOf([
     check('tipo').equals('Regular'),
     check('tipo').equals('Irregular'),
