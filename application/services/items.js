@@ -55,7 +55,11 @@ exports.patch = async (id, newItem) => {
 
 exports.update = async (id, newItem) => {
   try {
-    const item = await Item.findOne({ id });
+    const item = await Item.findOne({
+      where: {
+        id,
+      },
+    });
     item.set(newItem);
     item.save();
     return item;
