@@ -1,3 +1,0 @@
-{
-    "setupFilesAfterEnv": ["./config/testSetup.js"]
-}
