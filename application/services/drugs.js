@@ -6,8 +6,8 @@ exports.register = async (drug) => {
     const newDrug = await Drugs.create(drug);
     return newDrug;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while creating drug');
+    console.error();
+    const error = new Error('An error occurred while creating drug');
     error.statusCode = 500;
     throw error;
   }
@@ -20,8 +20,8 @@ exports.findAll = async (drug) => {
     });
     return drugs;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding drugs');
+    console.error();
+    const error = new Error('An error occurred while finding drugs');
     error.statusCode = 500;
     throw error;
   }
@@ -36,8 +36,8 @@ exports.findById = async (id) => {
     });
     return drugs;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while finding drug by id');
+    console.error();
+    const error = new Error('An error occurred while finding drug by id');
     error.statusCode = 500;
     throw error;
   }
@@ -51,8 +51,8 @@ exports.update = async (id, newDrug) => {
     drug.save();
     return drug;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while updating drug');
+    console.error();
+    const error = new Error('An error occurred while updating drug');
     error.statusCode = 500;
     throw error;
   }
@@ -67,8 +67,8 @@ exports.delete = async (id) => {
     });
     return drug;
   } catch (err) {
-    console.log(err);
-    const error = new Error('An error ocurred while deleting drug');
+    console.error();
+    const error = new Error('An error occurred while deleting drug');
     error.statusCode = 500;
     throw error;
   }
