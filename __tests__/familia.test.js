@@ -116,7 +116,7 @@ describe('Getting data from API - Family', () => {
         });
       });
   });
-  it('Calling PATCH endpoint with parameter ID', () => {
+  it('Calling PATCH endpoint with parameter ID', async () => {
     request.patch('/familia/3')
       .send({
         nome_familia: 'Familia test',

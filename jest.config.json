@@ -1,4 +1,7 @@
 {
     "setupFilesAfterEnv": ["./config/testSetup.js"],
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "jest": {
+        "verbose": true
+      }
 }
