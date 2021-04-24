@@ -12,14 +12,13 @@ exports.get = async () => {
 
 exports.getById = async (id) => {
   const result = await drugsService.findById(id);
- return result;
-};
-
-exports.put = async (id, request) => {
- const result = await drugsService.update(id, request.body);
   return result;
 };
 
+exports.put = async (id, request) => {
+  const result = await drugsService.update(id, request.body);
+  return result;
+};
 
 exports.delete = async (id) => {
   const result = await drugsService.delete(id);

@@ -9,7 +9,6 @@ const app = express();
 const start = async () => {
   try {
     await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
     app.use(express.json());
     app.use(express.urlencoded({
       extended: true,
@@ -20,9 +19,8 @@ const start = async () => {
       .include('adapters/api/routes')
       .into(app);
 
-    app.listen(3000, () => console.log('listening port 3000'));
+    app.listen(3000);
   } catch (err) {
-    console.log(err);
     process.exit(1);
   }
 };

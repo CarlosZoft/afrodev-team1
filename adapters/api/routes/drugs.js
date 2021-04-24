@@ -1,5 +1,5 @@
 const controller = require('../../controllers/drugs');
-//const validators = require("../validators/drugs");
+// const validators = require("../validators/drugs");
 
 module.exports = (app) => {
   app.post('/drugs', async (request, reply) => {
@@ -23,7 +23,7 @@ module.exports = (app) => {
   });
 
   app.delete('/drugs/:id', async (request, reply) => {
-    await controller.delete(request.params.id, request, reply)
+    await controller.delete(request.params.id, request, reply);
     return reply.json('Registro apagado');
   });
 };

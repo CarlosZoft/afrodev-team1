@@ -41,7 +41,7 @@ class Drugs extends Model {
         sequelize,
         underscored: true,
         tableName: 'drugs',
-      }
+      },
     );
   }
 }

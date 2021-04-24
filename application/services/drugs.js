@@ -43,10 +43,9 @@ exports.findById = async (id) => {
   }
 };
 
-
 exports.update = async (id, newDrug) => {
   try {
-    const drug = await Drugs.findOne({where:{ id }});
+    const drug = await Drugs.findOne({ where: { id } });
     drug.set(newDrug);
     drug.save();
     return drug;
