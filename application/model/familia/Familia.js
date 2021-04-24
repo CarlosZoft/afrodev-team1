@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const Model = require('./baseModel');
+const Model = require('../baseModel');
 
 class Familia extends Model {
   static init(sequelize) {

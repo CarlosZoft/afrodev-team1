@@ -1,5 +1,5 @@
-const Familia = require('../model/Familia');
-const restricao = require('../../adapters/api/validators/CamposVerifica');
+const Familia = require('../../model/familia/Familia');
+const restricao = require('../../../adapters/api/validators/familia/CamposVerifica');
 
 exports.create = async (familia) => {
   try {

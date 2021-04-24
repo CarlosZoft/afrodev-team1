@@ -1,4 +1,4 @@
-const servicosFamilia = require('../../application/services/familia');
+const servicosFamilia = require('../../../application/services/familia/familia');
 
 exports.post = async (request) => servicosFamilia.create(request.body);
 

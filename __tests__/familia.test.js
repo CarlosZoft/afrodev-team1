@@ -2,7 +2,7 @@ const supertest = require('supertest');
 const app = require('../index');
 
 const request = supertest(app);
-const modelFamilia = require('../application/model/Familia');
+const modelFamilia = require('../application/model/familia/Familia');
 const connectionDB = require('../config/connection');
 
 describe('Getting data from API - Family', () => {
