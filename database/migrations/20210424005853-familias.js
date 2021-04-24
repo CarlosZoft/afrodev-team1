@@ -32,13 +32,10 @@ module.exports = {
     },
     updated_at: {
       type: 'timestamp',
-      default: 'now()',
     },
     created_at: {
       type: 'timestamp',
-      default: 'now()',
     },
   }),
-
-  down: async (queryInterface) => queryInterface.dropTable('ongs'),
+  down: async (queryInterface) => queryInterface.dropTable('familias'),
 };
