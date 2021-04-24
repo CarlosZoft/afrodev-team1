@@ -42,7 +42,6 @@ describe('Getting data from API - Family', () => {
       });
     });
   });
-  // Segundo teste
 
   it('Calling POST endpoint without parameter', async () => {
     request.post('/familia')
@@ -96,7 +95,6 @@ describe('Getting data from API - Family', () => {
       });
     });
   });
-  // Terceiro Teste
 
   it('Calling POST endpoint without parameters ', async () => {
     request.post('/familia')
@@ -146,8 +144,10 @@ describe('Getting data from API - Family', () => {
   });
 
   afterAll(async (done) => {
-    await sequelize.truncate({ force: true });
-    await sequelize.close();
+    await modelFamilia.destroy({
+      truncate: true,
+      force: true,
+    });
     done();
   });
 });
